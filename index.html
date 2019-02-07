@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>UNBXD Banner</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <style>
+            .page-heading {
+                text-align: center;
+            }
+            .banner-form {
+                width: 80%;
+                margin: 0 auto;
+            }
+            .tcp-logo {
+                width: 10%;
+                float: left;
+                margin: 1% 5px auto 5%;
+            }
+            .submit-btn {
+                margin: 0 auto;
+                display: block;
+                margin-top: 4%;
+            }
+            .banner-json-wrapper {
+                margin: 0 auto;
+                max-width: 82%;
+                margin-top: 4%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron">
+            <a class="logo-container logo" href="https://www.childrensplace.com/us/home">
+                <img src="https://www.childrensplace.com/wcsstore/static/images/TCP-Logo.svg" alt="The Children's Place" class="tcp-logo"/>
+            </a>
+            <h1 class="display-4 page-heading">Creating UNBXD Banners Was Never This Easy!</h1>
+        </div>
+        <form class="banner-form">
+            <div class="form-group row">
+                <label for="guestBanner" class="col-sm-2 col-form-label col-form-label-lg">Guest</label>
+                <div class="col-sm-10">
+                    <textarea  class="form-control form-control-lg" id="guestBanner" placeholder="Banner for Guest Goes here"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="mprBanner" class="col-sm-2 col-form-label col-form-label-lg">MPR</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control form-control-lg" id="mprBanner" placeholder="Banner for MPR Goes here"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="plccBanner" class="col-sm-2 col-form-label col-form-label-lg">PLCC</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control form-control-lg" id="plccBanner" placeholder="Banner for PLCC Goes here"></textarea>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary mb-2 submit-btn" onclick="createJson(event)">Click here to Create JSON</button>
+        </form>
+        <div class="form-group row banner-json-wrapper">
+            <label for="unbxdJson" class="col-sm-2 col-form-label col-form-label-lg sr-only">Your Required UNBXD Banner JSON will appear here</label>
+            <div class="col-sm-12">
+                <textarea class="form-control form-control-lg" id="unbxdJson" placeholder="Your Required UNBXD Banner JSON will appear here"></textarea>
+            </div>
+        </div>
+    </body>
+    <script>
+        function createJson(event) {
+            var guestBanner = document.getElementById("guestBanner").value || "",
+                mprBanner = document.getElementById("mprBanner").value || "",
+                plccBanner = document.getElementById("plccBanner").value || "",
+                resultBox = document.getElementById("unbxdJson"),
+                unbxdJson = '{"loyalityBanners":[{"userType":"guest","html":"'+guestBanner+'},{"userType":"mpr","html":'+mprBanner+'"},{"userType":"plcc","html":'+plccBanner+'"}],"productBanners":null}';
+                resultBox.value = unbxdJson;
+        }
+    </script>
+</html>
